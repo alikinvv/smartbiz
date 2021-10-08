@@ -1,0 +1,1558 @@
+@charset 'UTF-8';
+@import 'mixins';
+
+$blue: #235cbf;
+$green: #25b246;
+$text: #111446;
+$purple: #65678a;
+$trans: all 0.2s ease-in-out;
+
+@include font-face('Geometria', '../fonts/Geometria/Geometria', normal);
+@include font-face('Geometria', '../fonts/Geometria-ExtraBold/Geometria-ExtraBold', 800);
+@include font-face('Geometria', '../fonts/Geometria-Medium/Geometria-Medium', 500);
+
+::selection {
+    background: $text;
+    color: #fff;
+}
+
+html.overflow {
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Geometria', sans-serif;
+    font-size: 16px;
+    color: $text;
+    font-weight: 500;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.green {
+    color: $green;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+    margin-top: 0;
+}
+
+h1 {
+    @include r(1390) {
+        font-size: 62px;
+    }
+
+    @include r(1279) {
+        font-size: 42px;
+    }
+
+    @include r(1023) {
+        white-space: normal;
+        font-size: 48px;
+        margin: 0 9% 42px;
+    }
+
+    @include r(767) {
+        font-size: 40px;
+        font-weight: bold;
+    }
+
+    @include r(479) {
+        font-size: 28px;
+        margin: 0 0 21px;
+    }
+
+    font-size: 72px;
+    font-weight: 800;
+    margin-bottom: 26px;
+    white-space: nowrap;
+}
+
+h2 {
+    @include r(767) {
+        font-weight: bold;
+        font-size: 39px;
+    }
+
+    @include r(479) {
+        font-size: 28px;
+        line-height: 40 / 32 * 100%;
+    }
+
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 40px;
+}
+
+button {
+    background: transparent;
+    border: 0;
+}
+
+.btn,
+input,
+textarea,
+select,
+button:focus {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.btn {
+    @include r(1279) {
+        padding: 14px 29px;
+    }
+
+    display: inline-block;
+    transition: $trans;
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+    background: $blue;
+    color: #fff;
+    border-radius: 100px;
+    padding: 19px 39px;
+    border: 2px solid transparent;
+
+    &:hover {
+        box-shadow: 0px 20px 13px -14px rgba(#000, 0.3);
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &.center {
+        @include centerX;
+    }
+
+    &-outline {
+        background: transparent;
+        border-color: $blue;
+        color: $blue;
+
+        &:hover {
+            background: $blue;
+            color: #fff;
+        }
+
+        &.btn-green {
+            border-color: $green;
+            color: $green;
+            background: transparent;
+
+            &:hover {
+                background: $green;
+                color: #fff;
+            }
+        }
+    }
+
+    &-green {
+        background: linear-gradient(0deg, rgba(11, 154, 44, 1) 0%, rgba(44, 184, 76, 1) 100%);
+    }
+}
+
+.container {
+    @include r(1295) {
+        padding: 0 15px;
+    }
+
+    margin: 0 auto;
+    max-width: 1265px;
+}
+
+.header {
+    @include r(1023) {
+        padding: 30px 48px;
+    }
+
+    @include r(767) {
+        padding: 19px 8px;
+    }
+
+    @include r(479) {
+        padding: 19px 0;
+    }
+
+    padding: 27px 0;
+
+    .container {
+        @include fcsb;
+    }
+
+    &__logo {
+        @include r(1279) {
+            font-size: 23px;
+        }
+
+        @include r(1023) {
+            font-size: 33px;
+        }
+
+        @include r(479) {
+            font-size: 18px;
+        }
+
+        @include fcn;
+        text-transform: uppercase;
+        font-size: 32px;
+        color: $blue;
+        letter-spacing: 3px;
+
+        img {
+            @include r(1279) {
+                margin-right: 15px;
+            }
+
+            @include r(479) {
+                width: 65px;
+            }
+
+            margin-right: 20px;
+        }
+    }
+
+    &__menu {
+        @include r(1023) {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: #fff;
+            z-index: 10;
+            flex-direction: column;
+            display: none;
+        }
+
+        @include fcc;
+
+        &.active {
+            @include fcc;
+        }
+
+        a {
+            @include r(1279) {
+                margin: 0 8px;
+                font-size: 16px;
+            }
+
+            @include r(1023) {
+                font-size: 40px;
+                margin: 15px 0;
+            }
+
+            @include r(767) {
+                font-size: 30px;
+                margin: 10px 0;
+            }
+
+            margin: 0 13px;
+            color: $blue;
+            transition: $trans;
+            font-size: 18px;
+
+            &:hover {
+                color: $green;
+            }
+        }
+    }
+
+    &__controls {
+        @include r(1023) {
+            display: none;
+        }
+
+        @include fcn;
+
+        .btn {
+            margin-left: 10px;
+        }
+    }
+}
+
+.hamburger {
+    @include r(1023) {
+        display: block;
+    }
+
+    @include r(767) {
+        height: 22px;
+    }
+
+    @include r(479) {
+        width: 30px;
+    }
+
+    width: 40px;
+    height: 27px;
+    display: none;
+    z-index: 11;
+    position: relative;
+
+    &.active span {
+        @include r(479) {
+            width: 30px;
+        }
+
+        width: 40px;
+    }
+
+    span {
+        @include r(767) {
+            height: 2px;
+        }
+
+        @include r(479) {
+            width: 23px;
+        }
+
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        width: 34px;
+        height: 3px;
+        background: $blue;
+        transition: $trans;
+    }
+
+    &::before,
+    &::after {
+        @include r(767) {
+            height: 2px;
+        }
+
+        @include r(479) {
+            width: 30px;
+        }
+
+        content: '';
+        position: absolute;
+        right: 0;
+        height: 3px;
+        width: 40px;
+        background: $blue;
+    }
+
+    &::before {
+        top: 0;
+    }
+
+    &::after {
+        bottom: 0;
+    }
+}
+
+.main {
+    @include r(767) {
+        padding: 35px 0;
+    }
+
+    overflow: hidden;
+    padding: 49px 0;
+
+    .container {
+        text-align: center;
+        position: relative;
+    }
+
+    img {
+        @include r(1390) {
+            height: 60vh;
+        }
+
+        @include r(1279) {
+            height: 37vh;
+            margin-bottom: 40px;
+        }
+
+        @include r(1023) {
+            height: 32vh;
+            margin-bottom: 48px;
+        }
+
+        @include r(767) {
+            height: 24vh;
+            margin-bottom: 42px;
+        }
+
+        @include r(479) {
+            height: 27vh;
+            margin-bottom: 7px;
+        }
+
+        @include centerX;
+        pointer-events: none;
+        user-select: none;
+        margin-bottom: 5px;
+    }
+
+    &__controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .btn {
+            @include r(1390) {
+                font-size: 23px;
+                padding: 22px 93px;
+            }
+
+            @include r(1279) {
+                font-size: 20px;
+                padding: 18px 73px;
+            }
+
+            @include r(1023) {
+                font-size: 28px;
+                padding: 22px 145px;
+            }
+
+            @include r(767) {
+                padding-left: 0;
+                padding-right: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            @include r(479) {
+                font-size: 24px;
+                padding-top: 24px;
+                padding-bottom: 24px;
+                margin-bottom: 22px;
+            }
+
+            margin-bottom: 32px;
+            padding: 22px 143px;
+            font-size: 28px;
+        }
+
+        span {
+            @include r(479) {
+                font-size: 18px;
+            }
+
+            font-size: 24px;
+        }
+    }
+}
+
+.service {
+    @include r(1023) {
+        padding: 55px 0;
+    }
+
+    @include r(767) {
+        padding: 17px 0;
+    }
+
+    @include r(479) {
+        padding: 57px 0;
+    }
+
+    padding: 71px 0;
+
+    h2 {
+        @include r(1023) {
+            text-align: center;
+        }
+
+        @include r(767) {
+            margin-bottom: 47px;
+        }
+
+        @include r(479) {
+            text-align: left;
+            margin-bottom: 27px;
+        }
+
+        margin-bottom: 72px;
+
+        .mobile {
+            @include r(479) {
+                display: block;
+            }
+
+            display: none;
+        }
+    }
+
+    &__list {
+        @include r(1279) {
+            @include fcsb;
+        }
+
+        @include r(1023) {
+            display: block;
+            padding: 0 13%;
+        }
+
+        @include r(767) {
+            padding: 0;
+        }
+
+        @include fsn;
+    }
+
+    &__item {
+        @include r(1279) {
+            margin-right: 0;
+            width: 30%;
+        }
+
+        @include r(1023) {
+            width: 100%;
+            @include fcn;
+            margin-bottom: 60px;
+
+            &:nth-child(2) {
+                img {
+                    order: 2;
+                    margin-right: 0;
+                    margin-left: 25px;
+                }
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        @include r(767) {
+            display: block;
+            text-align: center;
+            margin-bottom: 71px;
+        }
+
+        @include r(479) {
+            text-align: left;
+            margin-bottom: 16px;
+        }
+
+        margin-right: 97px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        img {
+            @include r(1023) {
+                margin-right: 25px;
+            }
+
+            @include r(767) {
+                margin-right: 0;
+                margin-bottom: 0;
+            }
+
+            margin-bottom: 40px;
+            pointer-events: none;
+            user-select: none;
+        }
+    }
+
+    &__title {
+        @include r(1279) {
+            font-size: 28px;
+        }
+
+        @include r(1023) {
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        @include r(767) {
+            margin-bottom: 20px;
+        }
+
+        @include r(479) {
+            font-size: 28px;
+        }
+
+        font-size: 32px;
+        margin-bottom: 32px;
+        line-height: 40 / 32 * 100%;
+    }
+
+    &__text {
+        @include r(1279) {
+            br {
+                display: none;
+            }
+        }
+
+        color: $purple;
+        line-height: 24 / 16 * 100%;
+    }
+}
+
+.features {
+    @include r(1023) {
+        padding: 80px 0;
+    }
+
+    @include r(479) {
+        padding: 10px 0;
+    }
+
+    position: relative;
+    padding: 89px 0;
+
+    &::after {
+        @include r(1023) {
+            display: none;
+        }
+
+        content: '';
+        position: absolute;
+        top: 11px;
+        right: 0;
+        bottom: 88px;
+        width: 50%;
+        background: #dcf2ff;
+        border-radius: 10px 0 0 10px;
+    }
+
+    h2 {
+        @include r(1023) {
+            margin-bottom: 80px;
+        }
+
+        @include r(767) {
+            margin-bottom: 57px;
+        }
+
+        margin-bottom: 121px;
+    }
+
+    .grid {
+        @include r(1023) {
+            display: none;
+        }
+
+        position: absolute;
+        top: 13px;
+        right: 30px;
+        transform: translateY(-50%);
+        z-index: 3;
+
+        &.bottom {
+            @include r(1023) {
+                display: block;
+                bottom: -55px;
+            }
+
+            @include r(479) {
+                width: 200px;
+                bottom: -37px;
+            }
+
+            top: initial;
+            bottom: -13px;
+            right: -1px;
+            transform: translateY(100%);
+        }
+    }
+
+    .container {
+        @include r(1023) {
+            display: block;
+        }
+
+        display: flex;
+        position: relative;
+        z-index: 2;
+
+        & > div {
+            @include r(1023) {
+                width: 100%;
+                margin-bottom: 0;
+
+                &:last-child {
+                    @include fcs;
+                    flex-direction: column;
+                    margin-top: 173px;
+                }
+            }
+
+            @include r(767) {
+                &:last-child {
+                    margin-top: 161px;
+                }
+            }
+
+            @include r(479) {
+                &:last-child {
+                    margin-top: 129px;
+                }
+            }
+
+            &:last-child {
+                &::after {
+                    @include r(1023) {
+                        display: block;
+                    }
+
+                    @include r(767) {
+                        width: calc(100% + 30px);
+                        border-radius: 0;
+                        top: -75px;
+                    }
+
+                    @include r(479) {
+                        bottom: -40px;
+                    }
+
+                    content: '';
+                    position: absolute;
+                    top: -89px;
+                    right: -15px;
+                    bottom: 25px;
+                    width: 98%;
+                    background: #dcf2ff;
+                    border-radius: 10px 0 0 10px;
+                    display: none;
+                }
+            }
+
+            width: 50%;
+            position: relative;
+            margin-bottom: -30px;
+        }
+    }
+
+    &__list {
+        @include r(767) {
+            padding-right: 0;
+            margin-bottom: 26px;
+        }
+
+        @include r(479) {
+            display: block;
+        }
+
+        @include fesb;
+        margin-bottom: 52px;
+        padding-right: 93px;
+    }
+
+    &__item {
+        @include r(1279) {
+            font-size: 22px;
+        }
+
+        @include r(1023) {
+            font-size: 24px;
+        }
+
+        @include r(479) {
+            @include fcn;
+            margin-bottom: 30px;
+
+            &:nth-child(4),
+            &:nth-child(2) {
+                display: none;
+            }
+
+            &:nth-child(3) {
+                img {
+                    order: 2;
+                    margin-left: 85px;
+                }
+            }
+        }
+
+        text-align: center;
+        font-size: 24px;
+
+        img {
+            @include r(479) {
+                margin-right: 25px;
+                margin-bottom: 0;
+            }
+
+            display: block;
+            margin-bottom: 23px;
+        }
+    }
+
+    &__text {
+        @include r(1279) {
+            font-size: 22px;
+        }
+
+        @include r(1023) {
+            font-size: 24px;
+        }
+
+        @include r(767) {
+            text-align: center;
+            font-size: 18px;
+        }
+
+        @include r(479) {
+            text-align: left;
+        }
+
+        font-size: 24px;
+        line-height: 32 / 24 * 100%;
+    }
+
+    .tabs {
+        @include r(1279) {
+            margin-left: 11%;
+        }
+
+        @include r(1023) {
+            position: relative;
+            z-index: 2;
+            margin-left: 0;
+        }
+
+        @include r(479) {
+            width: 100%;
+            margin-top: -36px;
+        }
+
+        @include fcc;
+        margin-left: 152px;
+        width: 360px;
+        margin-top: 14px;
+
+        a {
+            @include r(1023) {
+                padding: 16px 54px;
+            }
+
+            @include r(479) {
+                padding: 16px 35px;
+            }
+
+            padding: 20px 46px;
+            text-transform: uppercase;
+            color: $blue;
+            transition: $trans;
+            border-radius: 10px 10px 0 0;
+            background: #fff;
+            margin: 0 9px;
+            font-weight: 800;
+            font-size: 24px;
+
+            &.active {
+                background: $blue;
+                color: #fff;
+            }
+        }
+    }
+
+    img[data-tab] {
+        @include r(1279) {
+            margin-left: 11%;
+        }
+
+        @include r(1023) {
+            position: relative;
+            z-index: 2;
+            margin-left: 0;
+        }
+
+        @include r(479) {
+            width: 100%;
+        }
+
+        display: none;
+        width: 360px;
+        margin-left: 152px;
+        box-shadow: 15px 0 35px rgba($text, 0.25);
+
+        &.active {
+            display: block;
+        }
+    }
+}
+
+.icons {
+    @include r(1023) {
+        padding: 0 0 66px;
+    }
+
+    @include r(767) {
+        padding: 73px 0 66px;
+    }
+
+    @include r(479) {
+        padding: 100px 0 66px;
+    }
+
+    padding: 100px 0 66px;
+
+    h2 {
+        @include r(1279) {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        @include r(767) {
+            margin-bottom: 35px;
+        }
+
+        @include r(479) {
+            text-align: left;
+        }
+
+        margin-bottom: 119px;
+    }
+
+    &__list {
+        @include flexlist(1px);
+    }
+
+    &__item {
+        @include r(1279) {
+            @include flexitem(100%, 1px, 55px);
+            @include fcc;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        @include r(767) {
+            display: block;
+            text-align: center;
+        }
+
+        @include r(479) {
+            text-align: left;
+            margin-bottom: 22px;
+        }
+
+        @include flexitem(50%, 1px, 25px);
+        @include fcn;
+
+        &:nth-child(even) {
+            img {
+                @include r(767) {
+                    margin-left: 0;
+                }
+                order: 2;
+                margin-left: 20px;
+            }
+        }
+    }
+
+    img {
+        @include r(767) {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+
+        @include r(479) {
+            width: 84%;
+            @include centerX;
+        }
+
+        margin-right: 20px;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    &__title {
+        @include r(479) {
+            font-size: 32px;
+            margin-bottom: 22px;
+        }
+
+        font-weight: bold;
+        font-size: 28px;
+        margin-bottom: 30px;
+        line-height: 40 / 32 * 100%;
+    }
+
+    &__text {
+        @include r(479) {
+            br {
+                display: none;
+            }
+        }
+
+        line-height: 24 / 16 * 100%;
+        font-size: 15px;
+    }
+}
+
+.cards {
+    @include r(1460) {
+        overflow: hidden;
+    }
+
+    @include r(1279) {
+        background: #dcf2ff;
+        padding: 78px 0;
+    }
+
+    @include r(767) {
+        padding: 78px 0 45px;
+    }
+
+    @include r(479) {
+        padding: 46px 0 79px;
+    }
+
+    padding: 0;
+    position: relative;
+
+    &::after {
+        @include r(1390) {
+            width: 80%;
+        }
+
+        @include r(1279) {
+            display: none;
+        }
+
+        content: '';
+        position: absolute;
+        top: -16px;
+        right: 0;
+        bottom: -32px;
+        width: 70%;
+        background: #dcf2ff;
+        border-radius: 10px 0 0 10px;
+    }
+
+    h2 {
+        @include r(1279) {
+            text-align: center;
+        }
+
+        @include r(1023) {
+            margin-bottom: 53px;
+        }
+
+        @include r(767) {
+            text-align: center;
+        }
+
+        @include r(479) {
+            font-size: 36px;
+            text-align: left;
+            line-height: 36 / 36 * 100%;
+            margin-bottom: 45px;
+        }
+
+        margin-bottom: 71px;
+    }
+
+    .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    &__list {
+        @include r(1460) {
+            margin-bottom: 100px;
+        }
+
+        @include r(1279) {
+            display: block;
+            margin: 0;
+            padding: 0 5%;
+        }
+
+        @include r(479) {
+            padding: 0;
+        }
+
+        @include fcsb;
+        margin: 0 -80px;
+        position: relative;
+    }
+
+    &__item {
+        @include r(1279) {
+            padding: 40px 85px;
+            margin-bottom: 20px;
+        }
+
+        @include r(767) {
+            padding: 40px;
+
+            br {
+                display: none;
+            }
+        }
+
+        @include r(479) {
+            background: transparent;
+            padding: 0;
+            box-shadow: none;
+            margin-bottom: 60px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        padding: 75px 83px;
+        box-shadow: 0 0 35px rgba($text, 0.4);
+        position: relative;
+        z-index: 2;
+        border-radius: 10px;
+        background: #fff;
+
+        &.center {
+            @include r(1279) {
+                position: static;
+                transform: none;
+            }
+
+            z-index: 1;
+            @include centerXa;
+            bottom: -60px;
+            width: auto;
+        }
+
+        img {
+            @include r(479) {
+                margin-bottom: 15px;
+            }
+
+            margin-bottom: 7px;
+        }
+    }
+
+    &__text {
+        @include r(479) {
+            padding-left: 0;
+            line-height: 22 / 16 * 100%;
+            margin-bottom: 20px;
+        }
+
+        padding-left: 15px;
+        line-height: 24 / 16 * 100%;
+        margin-bottom: 40px;
+    }
+
+    &__name {
+        @include r(479) {
+            padding-left: 0;
+        }
+
+        font-weight: bold;
+        font-size: 24px;
+        padding-left: 15px;
+
+        span {
+            font-weight: 500;
+            font-size: 16px;
+            display: block;
+        }
+    }
+}
+
+.users {
+    @include r(1023) {
+        padding: 53px 0 69px;
+    }
+
+    @include r(767) {
+        padding: 30px 0 0;
+    }
+
+    padding: 146px 0 0;
+
+    .container {
+        @include r(1279) {
+            display: block;
+            text-align: center;
+        }
+
+        @include fec;
+
+        img {
+            @include r(1340) {
+                margin-left: -120px;
+            }
+
+            @include r(1279) {
+                margin: 0;
+            }
+
+            @include r(1023) {
+                margin-bottom: 34px;
+            }
+
+            @include r(767) {
+                width: 340px;
+                margin-bottom: 26px;
+            }
+
+            @include r(479) {
+                width: 86%;
+            }
+
+            margin-right: 15px;
+            margin-left: -207px;
+        }
+    }
+
+    h2 {
+        @include r(1279) {
+            display: flex;
+            flex-direction: column;
+
+            br {
+                display: none;
+            }
+        }
+
+        @include r(479) {
+            font-size: 35px;
+            line-height: 36 / 35 * 100%;
+        }
+
+        position: relative;
+        line-height: 64 / 48 * 100%;
+
+        span {
+            @include r(1340) {
+                top: -12px;
+                right: -118px;
+                font-size: 79px;
+            }
+
+            @include r(1279) {
+                position: static;
+            }
+
+            @include r(1023) {
+                font-size: 119px;
+                margin-top: 42px;
+                margin-bottom: 27px;
+            }
+
+            @include r(767) {
+                margin-bottom: 41px;
+            }
+
+            @include r(479) {
+                font-size: 90px;
+            }
+
+            position: absolute;
+            top: -26px;
+            right: -194px;
+            color: $blue;
+            font-size: 112px;
+        }
+    }
+}
+
+.faq {
+    @include r(1279) {
+        background: #dcf2ff;
+    }
+
+    @include r(1023) {
+        padding: 29px 0;
+    }
+
+    @include r(767) {
+        padding: 57px 0;
+
+        h2 {
+            margin-bottom: 11px;
+        }
+    }
+
+    @include r(479) {
+        padding: 64px 0 30px;
+    }
+
+    position: relative;
+    padding: 53px 0;
+    overflow: hidden;
+
+    h2 {
+        position: relative;
+        z-index: 4;
+    }
+
+    .text {
+        @include r(1700) {
+            left: -15%;
+        }
+
+        @include r(1600) {
+            left: -10%;
+        }
+
+        @include r(1600) {
+            left: -5%;
+            opacity: 0.9;
+        }
+
+        @include r(1390) {
+            left: 0;
+        }
+
+        @include r(1023) {
+            display: block;
+        }
+
+        @include r(767) {
+            width: 227px;
+        }
+
+        @include r(479) {
+            width: 277px;
+            left: -28px;
+        }
+
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -25%;
+        z-index: 3;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    &__list {
+        @include r(1279) {
+            padding-right: 13%;
+        }
+
+        @include r(1023) {
+            padding-right: 0;
+        }
+
+        @include r(767) {
+            padding: 0;
+        }
+
+        padding: 70px 0;
+        padding-right: 31%;
+        position: relative;
+        margin-bottom: 80px;
+        z-index: 3;
+        border-radius: 0 10px 10px 0;
+
+        &::after {
+            @include r(1340) {
+                width: 198.5%;
+            }
+
+            @include r(1279) {
+                display: none;
+            }
+
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 200%;
+            background: #dcf2ff;
+            border-radius: 0 10px 10px 0;
+            transform: translateX(-50%);
+        }
+
+        img {
+            @include r(1279) {
+                right: -35%;
+                z-index: 5;
+            }
+
+            @include r(1023) {
+                display: none;
+            }
+
+            position: absolute;
+            right: -20.95%;
+            top: 10%;
+            pointer-events: none;
+            user-select: none;
+            z-index: 3;
+        }
+    }
+}
+
+.question {
+    @include r(1023) {
+        font-size: 24px;
+    }
+
+    @include r(767) {
+        font-size: 18px;
+        padding: 30px 0;
+    }
+
+    @include r(479) {
+        padding-right: 50px;
+        line-height: 1.3;
+    }
+
+    font-size: 32px;
+    @include fsn;
+    cursor: pointer;
+    font-weight: 400;
+    padding: 35px 0;
+    border-bottom: 1px solid #a9bad1;
+    position: relative;
+    z-index: 4;
+
+    &::after {
+        @include r(767) {
+            width: 36px;
+            height: 36px;
+        }
+
+        content: '';
+        position: absolute;
+        top: 29px;
+        right: 0;
+        width: 48px;
+        height: 48px;
+        background: url('../img/plus.png') no-repeat center;
+        background-size: contain;
+        transition: $trans;
+    }
+
+    &.bd {
+        border: 0;
+    }
+
+    &.active {
+        &::after {
+            transform: rotate(90deg);
+        }
+    }
+
+    span {
+        @include r(767) {
+            width: 28px;
+        }
+
+        width: 70px;
+    }
+}
+
+.answer {
+    @include r(767) {
+        padding-top: 30px;
+    }
+
+    padding: 35px 0 0;
+    display: none;
+    position: relative;
+    z-index: 3;
+}
+
+.footer {
+    @include r(479) {
+        padding: 30px 0;
+    }
+
+    padding: 50px 0;
+
+    &__row {
+        @include r(1023) {
+            display: block;
+            text-align: center;
+        }
+
+        @include r(767) {
+            margin-bottom: 30px;
+        }
+
+        @include r(479) {
+            text-align: left;
+        }
+
+        @include fcsb;
+        margin-bottom: 52px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__logo {
+        @include r(1023) {
+            margin-bottom: 50px;
+        }
+
+        @include r(767) {
+            margin-bottom: 20px;
+        }
+
+        color: #000;
+        font-size: 18px;
+    }
+
+    &__menu {
+        @include r(767) {
+            display: none;
+        }
+
+        a {
+            @include r(1023) {
+                color: $blue;
+            }
+
+            color: #000;
+            transition: $trans;
+            margin: 0 10px;
+
+            &:hover {
+                @include r(1023) {
+                    color: #000;
+                }
+
+                color: $blue;
+            }
+        }
+    }
+
+    &__text {
+        @include r(1023) {
+            margin-bottom: 35px;
+        }
+
+        @include r(767) {
+            br {
+                display: none;
+            }
+        }
+
+        font-size: 14px;
+        line-height: 18 / 14 * 100%;
+    }
+
+    &__social {
+        @include fcc;
+
+        a {
+            margin: 0 10px;
+            transition: $trans;
+
+            &:hover {
+                opacity: 0.3;
+            }
+        }
+    }
+}
